@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AWS VPC Setup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    h2 {
+      color: #2980b9;
+    }
+    .section {
+      margin-bottom: 30px;
+      padding: 15px;
+      border-left: 4px solid #3498db;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    ul {
+      list-style-type: square;
+    }
+  </style>
+</head>
+<body>
+  <h1>AWS Infrastructure Setup</h1>
+
+  <div class="section">
+    <h2>1. VPC</h2>
+    <ul>
+      <li>CIDR: 10.0.0.0/16</li>
+      <li>DNS Support: Enabled</li>
+      <li>DNS Hostnames: Enabled</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2. Internet Gateway</h2>
+    <ul>
+      <li>Attached to the VPC</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Route Table</h2>
+    <ul>
+      <li>Public Route Table created</li>
+      <li>Route to Internet: 0.0.0.0/0 via Internet Gateway</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>4. Subnets</h2>
+    <ul>
+      <li>Subnet1: 10.0.1.0/24 (AZ 1)</li>
+      <li>Subnet2: 10.0.2.0/24 (AZ 2)</li>
+      <li>Subnet1 is associated with the public route table</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>5. Security Group</h2>
+    <ul>
+      <li>Allows SSH (port 22) from 0.0.0.0/0</li>
+      <li>Allows HTTP (port 80) from 0.0.0.0/0</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. EC2 Instance</h2>
+    <ul>
+      <li>Instance Type: t2.micro</li>
+      <li>AMI ID: ami-0e35ddab05955cf57</li>
+      <li>Deployed in Subnet1</li>
+      <li>Security Group attached</li>
+      <li>Key Pair: my-key-pair2</li>
+    </ul>
+  </div>
+
+</body>
+</html>

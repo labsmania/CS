@@ -1,0 +1,115 @@
+LAB 2
+serach 	vpc-create new-vpc only
+	subnet-create new- select vpc 
+	route table-create new
+	internet gateway- create gateway
+aws billing conductor-aws pricing calculator
+
+LAB 3
+create ec2 - search ec2-launch instance- select ubuntu- select existing security groups-advanced featurs- create new iam role- aws service -lambda- next-amazonec2fullacess-next-name-create-launch instance- go to instances an copy instance id- search lambda- functions- create functon- author from strach- python - create function- copy and paste the code-change the instance id and region 
+
+import boto3
+import botocore
+
+def lambda_handler(event, context):
+    ec2 = boto3.client('ec2', region_name='us-east-1')  # Set your region
+    instance_id = "i-0cb771a7775f3909f"  # Replace with your EC2 Instance ID
+
+    try:
+        response = ec2.stop_instances(InstanceIds=[instance_id])
+        return {
+            'statusCode': 200,
+            'body': f"Stopping instance {instance_id}. Response: {response}"
+        }
+    except botocore.exceptions.ClientError as e:
+        return {
+            'statusCode': 400,
+            'body': f"Error stopping instance {instance_id}: {str(e)}"
+        }
+    except Exception as e:
+        return {
+            'statusCode': 500,
+            'body': f"An unexpected error occurred: {str(e)}"
+        }
+
+-deploy -configuration change the time to 1 min- test - create an event- test 
+if not running check the iam roles and grant ec2fullacess
+
+
+
+LAB 4
+
+create vpc
+create 2 
+create ec2 instance replace the ami id and key value in the code
+save the code in desktop as cloudformation.yaml
+search cloud formation
+create stack
+upload template file
+upload the file 
+next
+next
+
+
+
+LAB 5
+
+search s3 bucket
+create s3 bucket
+name it lay1223
+disable 
+create s3 bucket
+go to dashboard
+upload a file or folder
+create folder
+select the uploaded file
+and use actions to move it elsewhere
+
+LAB 6 
+
+create a bucket
+create  a html file inside a folder and upload it
+open the buckets permisssions 
+give public acess 
+bucket properties 
+enable bucket versioning
+go to buckets properties
+enable static option
+go to permissions- acl - give public acess -list and read
+go to properties 
+open
+
+
+
+LAB 7
+
+create vpc
+create subnet
+create security group vpc
+create ec2 with these vpc, subnet and security grps
+
+sns 
+subscription
+create new subscription 
+create ec2 instance 
+go to dashboard
+alerts
+edit alerts
+select the created alert 
+
+
+go to cloud watch 
+all alerts
+create alert
+select metrics
+ec2
+pre instance metrics 
+cpu utilizations
+select 
+>=
+1
+next
+select the alert
+create 
+next 
+
